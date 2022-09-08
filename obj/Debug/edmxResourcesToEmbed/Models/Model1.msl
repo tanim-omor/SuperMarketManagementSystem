@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ShopManagementSystemModelStoreContainer" CdmEntityContainer="ShopManagementSystemEntitiesx">
+    <EntitySetMapping Name="C_current_">
+      <EntityTypeMapping TypeName="ShopManagementSystemModel.C_current_">
+        <MappingFragment StoreEntitySet="_current_">
+          <ScalarProperty Name="indx" ColumnName="indx" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Usertype" ColumnName="Usertype" />
+          <ScalarProperty Name="customer" ColumnName="customer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="carts">
+      <EntityTypeMapping TypeName="ShopManagementSystemModel.cart">
+        <MappingFragment StoreEntitySet="cart">
+          <ScalarProperty Name="CartId" ColumnName="CartId" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="Counts" ColumnName="Counts" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="ShopManagementSystemModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="CustomerAge" ColumnName="CustomerAge" />
+          <ScalarProperty Name="CustomerEmail" ColumnName="CustomerEmail" />
+          <ScalarProperty Name="CustomerPhone" ColumnName="CustomerPhone" />
+          <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+          <ScalarProperty Name="CustomerStatus" ColumnName="CustomerStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="methods">
+      <EntityTypeMapping TypeName="ShopManagementSystemModel.method">
+        <MappingFragment StoreEntitySet="method">
+          <ScalarProperty Name="chec" ColumnName="chec" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="ShopManagementSystemModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="PricePerUnit" ColumnName="PricePerUnit" />
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+          <ScalarProperty Name="UnitSold" ColumnName="UnitSold" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_admin">
+      <EntityTypeMapping TypeName="ShopManagementSystemModel.tbl_admin">
+        <MappingFragment StoreEntitySet="tbl_admin">
+          <ScalarProperty Name="ad_id" ColumnName="ad_id" />
+          <ScalarProperty Name="ad_username" ColumnName="ad_username" />
+          <ScalarProperty Name="ad_password" ColumnName="ad_password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_category">
+      <EntityTypeMapping TypeName="ShopManagementSystemModel.tbl_category">
+        <MappingFragment StoreEntitySet="tbl_category">
+          <ScalarProperty Name="cat_id" ColumnName="cat_id" />
+          <ScalarProperty Name="cat_name" ColumnName="cat_name" />
+          <ScalarProperty Name="cat_img" ColumnName="cat_img" />
+          <ScalarProperty Name="cat_fk_admin" ColumnName="cat_fk_admin" />
+          <ScalarProperty Name="cat_status" ColumnName="cat_status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_product">
+      <EntityTypeMapping TypeName="ShopManagementSystemModel.tbl_product">
+        <MappingFragment StoreEntitySet="tbl_product">
+          <ScalarProperty Name="pro_id" ColumnName="pro_id" />
+          <ScalarProperty Name="pro_name" ColumnName="pro_name" />
+          <ScalarProperty Name="pro_img" ColumnName="pro_img" />
+          <ScalarProperty Name="pro_desc" ColumnName="pro_desc" />
+          <ScalarProperty Name="pro_price" ColumnName="pro_price" />
+          <ScalarProperty Name="pro_fk_user" ColumnName="pro_fk_user" />
+          <ScalarProperty Name="pro_fk_cat" ColumnName="pro_fk_cat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_user">
+      <EntityTypeMapping TypeName="ShopManagementSystemModel.tbl_user">
+        <MappingFragment StoreEntitySet="tbl_user">
+          <ScalarProperty Name="u_id" ColumnName="u_id" />
+          <ScalarProperty Name="u_name" ColumnName="u_name" />
+          <ScalarProperty Name="u_email" ColumnName="u_email" />
+          <ScalarProperty Name="u_password" ColumnName="u_password" />
+          <ScalarProperty Name="u_img" ColumnName="u_img" />
+          <ScalarProperty Name="u_contact" ColumnName="u_contact" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="adminPins">
+      <EntityTypeMapping TypeName="ShopManagementSystemModel.adminPin">
+        <MappingFragment StoreEntitySet="adminPin">
+          <ScalarProperty Name="pinused" ColumnName="pinused" />
+          <ScalarProperty Name="pin" ColumnName="pin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="auths">
+      <EntityTypeMapping TypeName="ShopManagementSystemModel.auth">
+        <MappingFragment StoreEntitySet="auth">
+          <ScalarProperty Name="cookies" ColumnName="cookies" />
+          <ScalarProperty Name="ip_address" ColumnName="ip_address" />
+          <ScalarProperty Name="uname" ColumnName="uname" />
+          <ScalarProperty Name="verification" ColumnName="verification" />
+          <ScalarProperty Name="otp" ColumnName="otp" />
+          <ScalarProperty Name="pass" ColumnName="pass" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

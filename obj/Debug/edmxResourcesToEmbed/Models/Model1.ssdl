@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ShopManagementSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="_current_">
+    <Key>
+      <PropertyRef Name="indx" />
+    </Key>
+    <Property Name="indx" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="255" />
+    <Property Name="Usertype" Type="varchar" MaxLength="255" />
+    <Property Name="customer" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="adminPin">
+    <Key>
+      <PropertyRef Name="pin" />
+    </Key>
+    <Property Name="pin" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="pinused" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="auth">
+    <Key>
+      <PropertyRef Name="email" />
+    </Key>
+    <Property Name="uname" Type="varchar" MaxLength="255" />
+    <Property Name="email" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="pass" Type="varchar" MaxLength="255" />
+    <Property Name="otp" Type="varchar" MaxLength="255" />
+    <Property Name="verification" Type="varchar" MaxLength="255" />
+    <Property Name="ip_address" Type="varchar" MaxLength="255" />
+    <Property Name="cookies" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="cart">
+    <Key>
+      <PropertyRef Name="CartId" />
+    </Key>
+    <Property Name="CartId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CreateTime" Type="varchar" MaxLength="255" />
+    <Property Name="ProductName" Type="varchar" MaxLength="255" />
+    <Property Name="Counts" Type="varchar" MaxLength="255" />
+    <Property Name="Price" Type="float" />
+    <Property Name="CustomerId" Type="int" />
+    <Property Name="ProductId" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustomerId" />
+    </Key>
+    <Property Name="CustomerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerName" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="CustomerAge" Type="int" />
+    <Property Name="CustomerEmail" Type="varchar" MaxLength="255" />
+    <Property Name="CustomerPhone" Type="varchar" MaxLength="255" />
+    <Property Name="IssueDate" Type="varchar" MaxLength="255" />
+    <Property Name="CustomerStatus" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="method">
+    <Key>
+      <PropertyRef Name="chec" />
+    </Key>
+    <Property Name="chec" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="ProductName" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="PricePerUnit" Type="float" Nullable="false" />
+    <Property Name="ExpiryDate" Type="datetime" />
+    <Property Name="UnitSold" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_admin">
+    <Key>
+      <PropertyRef Name="ad_id" />
+    </Key>
+    <Property Name="ad_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ad_username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ad_password" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_category">
+    <Key>
+      <PropertyRef Name="cat_id" />
+    </Key>
+    <Property Name="cat_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cat_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="cat_img" Type="varchar(max)" Nullable="false" />
+    <Property Name="cat_fk_admin" Type="int" />
+    <Property Name="cat_status" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_product">
+    <Key>
+      <PropertyRef Name="pro_id" />
+    </Key>
+    <Property Name="pro_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pro_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="pro_img" Type="varchar(max)" Nullable="false" />
+    <Property Name="pro_desc" Type="varchar(max)" Nullable="false" />
+    <Property Name="pro_price" Type="int" />
+    <Property Name="pro_fk_user" Type="int" />
+    <Property Name="pro_fk_cat" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_user">
+    <Key>
+      <PropertyRef Name="u_id" />
+    </Key>
+    <Property Name="u_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="u_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="u_email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="u_password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="u_img" Type="varchar(max)" Nullable="false" />
+    <Property Name="u_contact" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__cart__CustomerId__59FA5E80">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="cart" Type="Self.cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerId" />
+      </Principal>
+      <Dependent Role="cart">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__cart__ProductId__5AEE82B9">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="cart" Type="Self.cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="cart">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_categ__cat_f__4F7CD00D">
+    <End Role="tbl_admin" Type="Self.tbl_admin" Multiplicity="0..1" />
+    <End Role="tbl_category" Type="Self.tbl_category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_admin">
+        <PropertyRef Name="ad_id" />
+      </Principal>
+      <Dependent Role="tbl_category">
+        <PropertyRef Name="cat_fk_admin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_produ__pro_f__5629CD9C">
+    <End Role="tbl_user" Type="Self.tbl_user" Multiplicity="0..1" />
+    <End Role="tbl_product" Type="Self.tbl_product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_user">
+        <PropertyRef Name="u_id" />
+      </Principal>
+      <Dependent Role="tbl_product">
+        <PropertyRef Name="pro_fk_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_produ__pro_f__571DF1D5">
+    <End Role="tbl_category" Type="Self.tbl_category" Multiplicity="0..1" />
+    <End Role="tbl_product" Type="Self.tbl_product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_category">
+        <PropertyRef Name="cat_id" />
+      </Principal>
+      <Dependent Role="tbl_product">
+        <PropertyRef Name="pro_fk_cat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ShopManagementSystemModelStoreContainer">
+    <EntitySet Name="_current_" EntityType="Self._current_" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="adminPin" EntityType="Self.adminPin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="auth" EntityType="Self.auth" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cart" EntityType="Self.cart" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="method" EntityType="Self.method" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_admin" EntityType="Self.tbl_admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_category" EntityType="Self.tbl_category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_product" EntityType="Self.tbl_product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_user" EntityType="Self.tbl_user" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__cart__CustomerId__59FA5E80" Association="Self.FK__cart__CustomerId__59FA5E80">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="cart" EntitySet="cart" />
+    </AssociationSet>
+    <AssociationSet Name="FK__cart__ProductId__5AEE82B9" Association="Self.FK__cart__ProductId__5AEE82B9">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="cart" EntitySet="cart" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_categ__cat_f__4F7CD00D" Association="Self.FK__tbl_categ__cat_f__4F7CD00D">
+      <End Role="tbl_admin" EntitySet="tbl_admin" />
+      <End Role="tbl_category" EntitySet="tbl_category" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_produ__pro_f__5629CD9C" Association="Self.FK__tbl_produ__pro_f__5629CD9C">
+      <End Role="tbl_user" EntitySet="tbl_user" />
+      <End Role="tbl_product" EntitySet="tbl_product" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_produ__pro_f__571DF1D5" Association="Self.FK__tbl_produ__pro_f__571DF1D5">
+      <End Role="tbl_category" EntitySet="tbl_category" />
+      <End Role="tbl_product" EntitySet="tbl_product" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

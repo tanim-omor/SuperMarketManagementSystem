@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ShopManagementSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="C_current_">
+    <Key>
+      <PropertyRef Name="indx" />
+    </Key>
+    <Property Name="indx" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Usertype" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="customer" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="cart">
+    <Key>
+      <PropertyRef Name="CartId" />
+    </Key>
+    <Property Name="CartId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CreateTime" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ProductName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Counts" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Price" Type="Double" />
+    <Property Name="CustomerId" Type="Int32" />
+    <Property Name="ProductId" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK__cart__CustomerId__59FA5E80" FromRole="cart" ToRole="Customer" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__cart__ProductId__5AEE82B9" FromRole="cart" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustomerId" />
+    </Key>
+    <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CustomerAge" Type="Int32" />
+    <Property Name="CustomerEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerPhone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="IssueDate" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerStatus" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="carts" Relationship="Self.FK__cart__CustomerId__59FA5E80" FromRole="Customer" ToRole="cart" />
+  </EntityType>
+  <EntityType Name="method">
+    <Key>
+      <PropertyRef Name="chec" />
+    </Key>
+    <Property Name="chec" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ProductName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PricePerUnit" Type="Double" Nullable="false" />
+    <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
+    <Property Name="UnitSold" Type="Int32" />
+    <NavigationProperty Name="carts" Relationship="Self.FK__cart__ProductId__5AEE82B9" FromRole="Product" ToRole="cart" />
+  </EntityType>
+  <EntityType Name="tbl_admin">
+    <Key>
+      <PropertyRef Name="ad_id" />
+    </Key>
+    <Property Name="ad_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ad_username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ad_password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="tbl_category" Relationship="Self.FK__tbl_categ__cat_f__4F7CD00D" FromRole="tbl_admin" ToRole="tbl_category" />
+  </EntityType>
+  <EntityType Name="tbl_category">
+    <Key>
+      <PropertyRef Name="cat_id" />
+    </Key>
+    <Property Name="cat_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cat_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cat_img" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cat_fk_admin" Type="Int32" />
+    <Property Name="cat_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="tbl_admin" Relationship="Self.FK__tbl_categ__cat_f__4F7CD00D" FromRole="tbl_category" ToRole="tbl_admin" />
+    <NavigationProperty Name="tbl_product" Relationship="Self.FK__tbl_produ__pro_f__571DF1D5" FromRole="tbl_category" ToRole="tbl_product" />
+  </EntityType>
+  <EntityType Name="tbl_product">
+    <Key>
+      <PropertyRef Name="pro_id" />
+    </Key>
+    <Property Name="pro_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pro_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="pro_img" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="pro_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="pro_price" Type="Int32" />
+    <Property Name="pro_fk_user" Type="Int32" />
+    <Property Name="pro_fk_cat" Type="Int32" />
+    <NavigationProperty Name="tbl_category" Relationship="Self.FK__tbl_produ__pro_f__571DF1D5" FromRole="tbl_product" ToRole="tbl_category" />
+    <NavigationProperty Name="tbl_user" Relationship="Self.FK__tbl_produ__pro_f__5629CD9C" FromRole="tbl_product" ToRole="tbl_user" />
+  </EntityType>
+  <EntityType Name="tbl_user">
+    <Key>
+      <PropertyRef Name="u_id" />
+    </Key>
+    <Property Name="u_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="u_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="u_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="u_password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="u_img" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="u_contact" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="tbl_product" Relationship="Self.FK__tbl_produ__pro_f__5629CD9C" FromRole="tbl_user" ToRole="tbl_product" />
+  </EntityType>
+  <Association Name="FK__cart__CustomerId__59FA5E80">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="cart" Type="Self.cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerId" />
+      </Principal>
+      <Dependent Role="cart">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__cart__ProductId__5AEE82B9">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="cart" Type="Self.cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="cart">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_categ__cat_f__4F7CD00D">
+    <End Role="tbl_admin" Type="Self.tbl_admin" Multiplicity="0..1" />
+    <End Role="tbl_category" Type="Self.tbl_category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_admin">
+        <PropertyRef Name="ad_id" />
+      </Principal>
+      <Dependent Role="tbl_category">
+        <PropertyRef Name="cat_fk_admin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_produ__pro_f__571DF1D5">
+    <End Role="tbl_category" Type="Self.tbl_category" Multiplicity="0..1" />
+    <End Role="tbl_product" Type="Self.tbl_product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_category">
+        <PropertyRef Name="cat_id" />
+      </Principal>
+      <Dependent Role="tbl_product">
+        <PropertyRef Name="pro_fk_cat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_produ__pro_f__5629CD9C">
+    <End Role="tbl_user" Type="Self.tbl_user" Multiplicity="0..1" />
+    <End Role="tbl_product" Type="Self.tbl_product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_user">
+        <PropertyRef Name="u_id" />
+      </Principal>
+      <Dependent Role="tbl_product">
+        <PropertyRef Name="pro_fk_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ShopManagementSystemEntitiesx" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C_current_" EntityType="Self.C_current_" />
+    <EntitySet Name="carts" EntityType="Self.cart" />
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="methods" EntityType="Self.method" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="tbl_admin" EntityType="Self.tbl_admin" />
+    <EntitySet Name="tbl_category" EntityType="Self.tbl_category" />
+    <EntitySet Name="tbl_product" EntityType="Self.tbl_product" />
+    <EntitySet Name="tbl_user" EntityType="Self.tbl_user" />
+    <AssociationSet Name="FK__cart__CustomerId__59FA5E80" Association="Self.FK__cart__CustomerId__59FA5E80">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="cart" EntitySet="carts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__cart__ProductId__5AEE82B9" Association="Self.FK__cart__ProductId__5AEE82B9">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="cart" EntitySet="carts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_categ__cat_f__4F7CD00D" Association="Self.FK__tbl_categ__cat_f__4F7CD00D">
+      <End Role="tbl_admin" EntitySet="tbl_admin" />
+      <End Role="tbl_category" EntitySet="tbl_category" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_produ__pro_f__571DF1D5" Association="Self.FK__tbl_produ__pro_f__571DF1D5">
+      <End Role="tbl_category" EntitySet="tbl_category" />
+      <End Role="tbl_product" EntitySet="tbl_product" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_produ__pro_f__5629CD9C" Association="Self.FK__tbl_produ__pro_f__5629CD9C">
+      <End Role="tbl_user" EntitySet="tbl_user" />
+      <End Role="tbl_product" EntitySet="tbl_product" />
+    </AssociationSet>
+    <EntitySet Name="adminPins" EntityType="ShopManagementSystemModel.adminPin" />
+    <EntitySet Name="auths" EntityType="ShopManagementSystemModel.auth" />
+  </EntityContainer>
+  <EntityType Name="adminPin">
+    <Key>
+      <PropertyRef Name="pin" />
+    </Key>
+    <Property Name="pin" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="pinused" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="auth">
+    <Key>
+      <PropertyRef Name="email" />
+    </Key>
+    <Property Name="email" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="pass" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="otp" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="verification" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="uname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ip_address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="cookies" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>
