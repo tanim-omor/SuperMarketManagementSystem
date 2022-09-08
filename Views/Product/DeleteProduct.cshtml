@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "DeleteProduct";
+    Layout = "~/Views/Shared/ForEmployee/_LayoutPageManageProduct.cshtml";
+}
+
+<h2>DeleteProduct</h2>
+
+
+
+<form action="/Product/DeleteProduct" method="post">
+
+    <div class="form-group">
+        <label for="">Product Id</label>
+        <input type="text" class="form-control" id="txtName" placeholder="Enter Product Id here" name="pid">
+        @Html.ValidationMessage("Input", "", new { @class = "text-danger" })
+    </div>
+
+    <button class="btn btn-success">Submit</button>
+</form>
+
+
+

@@ -1,0 +1,97 @@
+﻿@model List<Final_Project.Models.Product>
+@{
+    ViewBag.Title = "Product";
+    Layout = "~/Views/Shared/ForEmployee/_LayoutPageManageProduct.cshtml";
+}
+
+<h2>Find Product</h2>
+<form action="/Product/FindProduct" method="post">
+    <div class="float-container">
+
+        <div class="float-child">
+            <div class="form-group">
+                <h3>Product Id-</h3>
+                <label for="">Equal to</label>
+                <input type="text" class="form-control" id="txtsearch" placeholder="Match with a number" name="id_equal_to">
+                <label for="">Less than</label>
+                <input type="text" class="form-control" id="txtsearch" placeholder="Check if less than a number" name="id_less_than">
+                <label for="">Larger than</label>
+                <input type="text" class="form-control" id="txtsearch" placeholder="Check if greater than a number" name="id_greater_than">
+            </div>
+            <div class="form-group">
+                <h3>Product Name-</h3>
+                <label for="">Equal to</label>
+                <input type="text" class="form-control" id="txtsearch" placeholder="Match with some text" name="productName_equal_to">
+                <label for="">Less than</label>
+                <input type="text" class="form-control" id="txtsearch" placeholder="Check if name contains a text" name="productName_contains">
+            </div>
+
+            <div class="form-group">
+                <h3>Price Per Unit-</h3>
+                <label for="">Equal to</label>
+                <input type="text" class="form-control" id="txtsearch" placeholder="Match with a number" name="price_equal_to">
+                <label for="">Less than</label>
+                <input type="text" class="form-control" id="txtsearch" placeholder="Check if less than a number" name="price_less_than">
+                <label for="">Larger than</label>
+                <input type="text" class="form-control" id="txtsearch" placeholder="Check if greater than a number" name="price_greater_than">
+            </div>
+
+            <div class="form-group">
+                <h3>Expiry Date-</h3>
+                <label for="">Equal to</label>
+                <input type="text" class="form-control" id="txtsearch" placeholder="Match with a number" name="expiry_equal_to">
+                <label for="">Less than</label>
+                <input type="text" class="form-control" id="txtsearch" placeholder="Check if less than a number" name="expiry_less_than">
+                <label for="">Larger than</label>
+                <input type="text" class="form-control" id="txtsearch" placeholder="Check if greater than a number" name="expiry_greater_than">
+            </div>
+
+            <div class="form-group">
+                <h3>Unit sold-</h3>
+                <label for="">Equal to</label>
+                <input type="text" class="form-control" id="txtsearch" placeholder="Match with a number" name="unit_equal_to">
+                <label for="">Less than</label>
+                <input type="text" class="form-control" id="txtsearch" placeholder="Check if less than a number" name="unit_less_than">
+                <label for="">Larger than</label>
+                <input type="text" class="form-control" id="txtsearch" placeholder="Check if greater than a number" name="unit_greater_than">
+            </div>
+
+            <button class="btn btn-success">Submit</button>
+        </div>
+
+        <div class="float-child">
+            <table class="table table-striped table-hover ">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Product Id</th>
+                        <th>ProductName</th>
+                        <th>PricePerUnit</th>
+                        <th>ExpiryDate</th>
+                        <th>UnitSold</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ int index = 1; }
+                    @foreach (var p in Model)
+                    {
+                        <tr>
+                            <td>@index</td>
+                            <td>@p.ProductId</td>
+                            <td>@p.ProductName</td>
+                            <td>@p.PricePerUnit</td>
+                            <td>@p.ExpiryDate</td>
+                            <td>@p.UnitSold</td>
+                            <td><button class="btn btn-primary">Edit</button></td>
+                            <td><button class="btn btn-primary">Delete</button></td>
+
+                        </tr>
+
+
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</form>

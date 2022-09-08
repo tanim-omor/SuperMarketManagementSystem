@@ -1,0 +1,47 @@
+﻿
+
+@{
+    ViewBag.Title = "AddProduct";
+    Layout = "~/Views/Shared/ForEmployee/_LayoutPageManageProduct.cshtml";
+}
+
+<h2>Add New Product</h2>
+
+<form action="/Product/AddProduct" method="post">
+
+    <div class="form-group">
+        <label for="">ProductId</label>
+        <input type="text" class="form-control" id="txtName" placeholder="Enter Name" name="ProductId">
+        @Html.ValidationMessage("Input", "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label for="">ProductName</label>
+        <input type="text" class="form-control" id="txtName" placeholder="Enter Name" name="ProductName">
+        @Html.ValidationMessage("Input", "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label for="">PricePerUnit</label>
+        <input type="text" class="form-control" id="txtName" placeholder="Enter Name" name="PricePerUnit">
+        @Html.ValidationMessage("Input", "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label for="">ExpiryDate</label>
+        <input type="text" class="form-control" id="txtName" placeholder="Enter Name" name="ExpiryDate">
+        @Html.ValidationMessage("Input", "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label for="">UnitSold</label>
+        <input type="text" class="form-control" id="txtName" placeholder="Enter Name" name="UnitSold">
+        @Html.ValidationMessage("Input", "", new { @class = "text-danger" })
+    </div>
+
+
+    <div class="text-danger">
+        @Html.ValidationSummary()
+    </div>
+    <button class="btn btn-success">Submit</button>
+</form>

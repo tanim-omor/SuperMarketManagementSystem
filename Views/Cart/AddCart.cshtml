@@ -1,0 +1,118 @@
+﻿@model List<Final_Project.Models.Customer>
+
+@{
+    ViewBag.Title = "Set Customer";
+    Layout = "~/Views/Shared/ForEmployee/_LayoutPageManageCart.cshtml";
+}
+
+<h2>AddCart</h2>
+<link rel="stylesheet" href="@Url.Content("~/Content/style.css")" type="text/css">
+<form action="/Cart/AddCart" method="post">
+    <div class="form-group">
+        <label for="">Customer Id</label>
+        <input type="text" class="form-control" id="txtName" placeholder="Enter Customer's' Id" name="cusid" required>
+        @Html.ValidationMessage("Input", "", new { @class = "text-danger" })
+    </div>
+
+    <button class="btn btn-success">Pass</button>
+</form>
+
+<h2>Customer details</h2>
+
+<table class="table table-striped table-hover ">
+    <tbody>
+        <tr>
+            <td> <b>Customer ID:</b></td>
+            <td>@ViewBag.customer.CustomerId</td>
+        </tr>
+        <tr>
+            <td><b>Customer Name: </b></td>
+            <td>@ViewBag.customer.CustomerName</td>
+        </tr>
+        <tr>
+            <td><b>Customer Age: </b></td>
+            <td>@ViewBag.customer.CustomerAge</td>
+        </tr>
+        <tr>
+            <td><b>Customer E-mail: </b></td>
+            <td>@ViewBag.customer.CustomerEmail</td>
+        </tr>
+        <tr>
+            <td><b>Customer Phone: </b></td>
+            <td>@ViewBag.customer.CustomerPhone</td>
+        </tr>
+        <tr>
+            <td><b>Issue Date: </b></td>
+            <td>@ViewBag.customer.IssueDate</td>
+        </tr>
+        <tr>
+            <td><b>Customer Status: </b></td>
+            <td>@ViewBag.customer.CustomerStatus</td>
+        </tr>
+    </tbody>
+</table>
+
+<form action="/Cart/Redir" method="post">
+    <button class="btn btn-success">Continue>></button>
+</form>
+
+
+@*<form action="/Cart/AddCart" method="post">
+
+        <div class="form-group">
+            <label for="">Create Time</label>
+            <input type="text" class="form-control" id="txtName" placeholder="Enter Name" name="CreateTime">
+            @Html.ValidationMessage("Input", "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <label for="">Product Id</label>
+            <input type="text" class="form-control" id="txtName" placeholder="Enter Name" name="ProductId">
+            @Html.ValidationMessage("Input", "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <label for="">Product Name</label>
+            <input type="text" class="form-control" id="txtName" placeholder="Enter Name" name="ProductName">
+            @Html.ValidationMessage("Input", "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <label for="">Quantity</label>
+            <input type="text" class="form-control" id="txtName" placeholder="Enter Name" name="Counts">
+            @Html.ValidationMessage("Input", "", new { @class = "text-danger" })
+        </div>
+
+        <div class="text-danger">
+            @Html.ValidationSummary()
+        </div>
+        <button class="btn btn-success">Submit</button>
+    </form>*@
+
+
+<!--<table class="table table-striped table-hover ">
+    <thead>
+        <tr>
+            <th>Create time</th>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </tr>
+    </thead>-->
+@*<tbody>
+        @{ int index = 1; }
+        @foreach (var p in ViewBag.carts)
+        {
+            <tr>
+                <td>@index</td>
+                <td>@p.CreateTime</td>
+                <td>@p.ProductName</td>
+                <td>@p.Counts</td>
+                <td></td>
+            </tr>
+            { index++; }
+        }
+
+
+    </tbody>*@
+<!--</table>-->

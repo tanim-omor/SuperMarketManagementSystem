@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "AddCustomer";
+    Layout = "~/Views/Shared/ForEmployee/_LayoutPageManageCustomer.cshtml";
+}
+
+<h2>Add New Customer</h2>
+
+
+<form action="/Customer/AddCustomer" method="post">
+
+    <div class="form-group">
+        <label for="">Customer Name</label>
+        <input type="text" class="form-control" id="txtName" placeholder="Enter Name" name="CustomerName">
+        @Html.ValidationMessage("Input", "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label for="">Customer Age</label>
+        <input type="text" class="form-control" id="txtName" placeholder="Enter Name" name="CustomerAge">
+        @Html.ValidationMessage("Input", "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label for="">Customer Email</label>
+        <input type="text" class="form-control" id="txtName" placeholder="Enter Name" name="CustomerEmail">
+        @Html.ValidationMessage("Input", "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label for="">Customer Phone</label>
+        <input type="text" class="form-control" id="txtName" placeholder="Enter Name" name="CustomerPhone">
+        @Html.ValidationMessage("Input", "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label for="">Issue Date</label>
+        <input type="text" class="form-control" id="txtName" placeholder="Enter Name" name="IssueDate">
+        @Html.ValidationMessage("Input", "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        <label for="">Customer Status</label>
+        <input type="text" class="form-control" id="txtName" placeholder="Enter Name" name="CustomerStatus">
+        @Html.ValidationMessage("Input", "", new { @class = "text-danger" })
+    </div>
+
+    <div class="text-danger">
+        @Html.ValidationSummary()
+    </div>
+    <button class="btn btn-success">Submit</button>
+</form>

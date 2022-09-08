@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+}
+
+<head>
+    <title>Employee Registration</title>
+    <link href="@Url.Content("~/Content/style2.css")" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div class="body-content">
+        <div class="container">
+            <h1 class="label">Employee Registration</h1>
+            <form class="login_form" method="post" name="form" onsubmit="return validated()">
+
+                <div class="font">Admin's Pin</div>
+                <input autocomplete="off" type="number" name="pin" id="pin" onkeyup="evPin(this.value)">
+                <div id="pin_error">Please enter the pin provided by the Admin</div>
+
+                <div class="font">Name</div>
+                <input autocomplete="off" type="text" name="name" id="name" onkeyup="evName(this.value)">
+                <div id="name_error">Please enter your name here</div>
+
+                <div class="font">Email</div>
+                <input autocomplete="off" type="text" id="email" name="email" onkeyup="ev(this.value)">
+                <div id="email_error">Please fill up your Email</div>
+
+                <div class="font">Password</div>
+                <input type="password" name="password" id="password" onkeyup="epass(this.value)">
+                <div id="pass_error">Please fill up your Password</div>
+
+                <button style="margin-top: 15px" type="submit">Sign up</button>
+                <button id="goBackButton">Go Back</button>
+            </form>
+            
+        </div>
+    </div>
+
+    <script src="~/Scripts/valid.js" type="text/javascript"></script>
+
+</body>

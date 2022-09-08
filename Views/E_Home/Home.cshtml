@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/ForEmployee/_LayoutPageEmployee.cshtml";
+}
+
+<h2 style="margin-top: 150px">Welcome to Employee Panel!</h2>
+
+<body>
+
+    <script type="text/javascript">
+
+        console.log("Js connected")
+        var cookies = document.cookie
+            .split(';')
+            .map(cookie => cookie.split('='))
+            .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {});
+
+        console.log(cookies.ssms)
+
+
+    </script>
+
+</body>

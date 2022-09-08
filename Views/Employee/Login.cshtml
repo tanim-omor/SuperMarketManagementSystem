@@ -1,0 +1,38 @@
+﻿
+
+@{
+    ViewBag.Title = "Login";
+    //Layout = "~/Views/Shared/ForEmployee/_LayoutPageEmployeeBase.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Employee Login</title>
+    <link href="@Url.Content("~/Content/style3.css")" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="container">
+        <h1 class="label">User Login</h1>
+        <form class="login_form" action="/Employee/Login" method="post" name="form" onsubmit="return valid()">
+            <div class="font">Email</div>
+            <input autocomplete="off" type="text" name="email" onkeyup="ev(this.value)">
+            <div id="email_error">Please fill up your Email or Phone</div>
+            <div class="font font2">Password</div>
+            <input type="password" name="password">
+            <div id="pass_error">Please fill up your Password</div>
+            <button type="submit">Login</button>
+
+            <div class="form-group" style="">
+                <input type="text" class="form-control" id="hidden" name="ProductName" style="display:none">
+                @Html.ValidationMessage("Input", "", new { @class = "text-danger" })
+            </div>
+
+        </form>
+    </div>
+    <script src="~/Scripts/ValidLog.js" type="text/javascript"></script>
+</body>
+</html>
+
+
+

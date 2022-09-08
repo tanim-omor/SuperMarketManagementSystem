@@ -1,0 +1,27 @@
+﻿
+@{
+}
+
+
+<head>
+    <link href="@Url.Content("~/Content/style2.css")" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div class="body-content">
+        <div class="container">
+            <h1 class="label" style="padding: 20px 194px ">OTP</h1>
+            <form class="login_form" method="post" name="form" onsubmit="return validated()">
+
+                <div class="font">Enter OTP sent to your email..</div>
+                <input autocomplete="off" type="number" name="pin" id="pin" onkeyup="evPin(this.value)">
+                <div id="pin_error">Please enter the pin provided by the Admin</div>
+                <button style="margin-top: 15px" type="submit">Match</button>
+            </form>
+
+        </div>
+    </div>
+
+    <script src="~/Scripts/valid.js" type="text/javascript"></script>
+
+</body>

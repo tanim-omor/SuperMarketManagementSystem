@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "DeleteCustomer";
+    Layout = "~/Views/Shared/ForEmployee/_LayoutPageManageCustomer.cshtml";
+}
+
+<h2>DeleteCustomer</h2>
+
+
+
+<form action="/Customer/DeleteCustomer" method="post">
+
+    <div class="form-group">
+        <label for="">Customer Id</label>
+        <input type="text" class="form-control" id="txtName" placeholder="Enter Customer Id here" name="UserId">
+        @Html.ValidationMessage("Input", "", new { @class = "text-danger" })
+    </div>
+
+    <button class="btn btn-success">Submit</button>
+</form>
+
